@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Where is everyone?</title>
+        <style>
+            body {
+                padding: 2rem;
+                font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            }
+            table {
+                width: 100%;
+                margin-bottom: 20px;
+                border-collapse: collapse;
+            }
+            th {
+                background-color: #eee;
+            }
+            td,
+            th {
+                width: 2rem;
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Where is everyone?</h1>
+
+        <div id="dataDiv"></div>
+
+        <script>
+            fetch(
+                'https://raw.githubusercontent.com/11ways/where-is-everyone/master/people.json',
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    const dataDiv = document.querySelector('#dataDiv');
+
+                    data.people.forEach((person) => {
+                        // Create a header with the person's name
+                        const personHeader = document.createElement('h2');
+                        personHeader.textContent = person.name;
+                        dataDiv.appendChild(personHeader);
+
+                        const tbl = document.createElement('table');
+                        const tblHead = document.createElement('thead');
+                        const tblBody = document.createElement('tbody');
+
+                        const headRow = document.createElement('tr');
+
+                        const th1 = document.createElement('th');
+                        th1.textContent = 'Date';
+                        headRow.appendChild(th1);
+
+                        const th2 = document.createElement('th');
+                        th2.textContent = 'Location';
+                        headRow.appendChild(th2);
+
+                        tblHead.appendChild(headRow);
+                        tbl.appendChild(tblHead);
+
+                        person.days.forEach((day) => {
+                            const row = document.createElement('tr');
+
+                            const dateCell = document.createElement('td');
+                            const date = new Date(day.timestamp);
+                            dateCell.textContent = `${date.getDate()}-${
+                                date.getMonth() + 1
+                            }-${date.getFullYear()}`;
+                            row.appendChild(dateCell);
+
+                            const locationCell = document.createElement('td');
+                            locationCell.textContent = day.location;
+                            row.appendChild(locationCell);
+
+                            tblBody.appendChild(row);
+                        });
+
+                        tbl.appendChild(tblBody);
+                        dataDiv.appendChild(tbl);
+                    });
+                });
+        </script>
+    </body>
+</html>
