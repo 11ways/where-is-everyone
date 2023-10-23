@@ -1,0 +1,268 @@
+{
+  "people": [
+    {
+      "id": "rianne.welledonker@elevenways.be",
+      "name": "Rianne Welle Donker",
+      "days": [
+        {
+          "timestamp": "2023-10-24",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "regine.lambrecht@elevenways.be",
+      "name": "Régine Lambrecht",
+      "days": [
+        {
+          "timestamp": "2023-10-24",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "federica.buzzi@elevenways.be",
+      "name": "Federica Buzzi",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-30",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "meryem.lahouel@elevenways.be",
+      "name": "Méryem Lahouel",
+      "days": [
+        {
+          "timestamp": "2023-10-24",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-31",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "roel.van.gils@elevenways.be",
+      "name": "Roel Van Gils",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-30",
+          "location": "Kantoor Kouter (Office)"
+        }
+      ]
+    },
+    {
+      "id": "christophe.strobbe@elevenways.be",
+      "name": "Christophe Strobbe",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-30",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "jan.de.clercq@elevenways.be",
+      "name": "Jan De Clercq",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-30",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "id": "sophie.ragas@elevenways.be",
+      "name": "Sophie Ragas",
+      "days": [
+        {
+          "timestamp": "2023-10-24",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "BOSA"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2023-10-27",
+          "location": "Thuis"
+        }
+      ]
+    },
+    {
+      "id": "nora.goerne@elevenways.be",
+      "name": "Nora Goerne",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Kantoor Kouter (Kantoor)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Thuis"
+        }
+      ]
+    },
+    {
+      "id": "jelle@elevenways.be",
+      "name": "Jelle De Loecker",
+      "days": [
+        {
+          "timestamp": "2023-10-23",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-24",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-25",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-26",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2023-10-30",
+          "location": "Kantoor Kouter (Office)"
+        }
+      ]
+    }
+  ]
+}
