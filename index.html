@@ -548,30 +548,24 @@
                 const deskIndicators = document.createElement('div');
                 deskIndicators.className = 'desk-indicators';
                 
-                // Create 7 bars (5 fixed + 2 flex)
-                for (let i = 0; i < FIXED_DESKS + FLEX_DESKS; i++) {
+                // Create bars based on occupant count
+                const totalBars = Math.max(FIXED_DESKS + FLEX_DESKS, occupantCount);
+                
+                for (let i = 0; i < totalBars; i++) {
                     const deskBar = document.createElement('div');
                     deskBar.className = 'desk-bar';
                     
                     if (i < occupantCount) {
                         if (i < FIXED_DESKS) {
-                            deskBar.classList.add('occupied');
+                            deskBar.classList.add('occupied'); // Green for first 5
                         } else if (i < FIXED_DESKS + FLEX_DESKS) {
-                            deskBar.classList.add('flex');
+                            deskBar.classList.add('flex'); // Orange for next 2
+                        } else {
+                            deskBar.classList.add('overcapacity'); // Red for anything else
                         }
                     }
                     
                     deskIndicators.appendChild(deskBar);
-                }
-                
-                // Add extra red bars if over capacity
-                if (occupantCount > FIXED_DESKS + FLEX_DESKS) {
-                    const extraCount = occupantCount - (FIXED_DESKS + FLEX_DESKS);
-                    for (let i = 0; i < extraCount; i++) {
-                        const deskBar = document.createElement('div');
-                        deskBar.className = 'desk-bar overcapacity';
-                        deskIndicators.appendChild(deskBar);
-                    }
                 }
                 
                 dayDiv.appendChild(deskIndicators);
