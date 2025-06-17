@@ -417,22 +417,18 @@
         async function loadData() {
             console.log('loadData called');
             const contentDiv = document.getElementById('content');
+            let url = '';
             
             try {
                 console.log('Starting fetch from:', GITHUB_RAW_URL);
                 // Add timestamp to URL to prevent caching
                 const timestamp = new Date().getTime();
-                const url = `${GITHUB_RAW_URL}?t=${timestamp}`;
+                url = `${GITHUB_RAW_URL}?t=${timestamp}`;
                 
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
                 
                 const response = await fetch(url, {
-                    cache: 'no-cache',
-                    headers: {
-                        'Cache-Control': 'no-cache',
-                        'Pragma': 'no-cache'
-                    },
                     signal: controller.signal
                 });
                 
