@@ -98,6 +98,81 @@
             margin-bottom: 1rem;
         }
 
+        .office-occupancy {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .office-occupancy h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .occupancy-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .day-occupancy {
+            text-align: center;
+        }
+
+        .day-name {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .desk-indicators {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .desk-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .desk-bar.occupied {
+            background: #4caf50;
+        }
+
+        .desk-bar.flex {
+            background: #ff9800;
+        }
+
+        .desk-bar.overcapacity {
+            background: #f44336;
+        }
+
+        .occupant-names {
+            font-size: 0.75rem;
+            color: #666;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .occupant-names .name {
+            display: block;
+            margin: 0.15rem 0;
+        }
+
+        .desk-count {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
         .loading {
             text-align: center;
             padding: 3rem;
@@ -237,6 +312,20 @@
                 font-size: 0.7rem;
                 padding: 0.15rem 0.4rem;
             }
+
+            .occupancy-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .day-occupancy {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 1rem;
+            }
+
+            .day-occupancy:last-child {
+                border-bottom: none;
+            }
         }
     </style>
 </head>
@@ -250,6 +339,10 @@
             <input type="text" id="searchInput" class="search-input" placeholder="Search by name...">
         </div>
         <div id="lastUpdated" class="last-updated"></div>
+        <div id="officeOccupancy" class="office-occupancy" style="display: none;">
+            <h2>Office Occupancy</h2>
+            <div id="occupancyGrid" class="occupancy-grid"></div>
+        </div>
         <div id="content" class="loading">Loading...</div>
     </div>
 
@@ -392,6 +485,116 @@
         }
 
         let allPeople = [];
+        const FIXED_DESKS = 5;
+        const FLEX_DESKS = 2;
+
+        function calculateOfficeOccupancy() {
+            const weekDays = getCurrentWeekDays();
+            const occupancyByDay = {};
+            
+            // Initialize days
+            weekDays.forEach(date => {
+                const dateKey = formatDateISO(date);
+                occupancyByDay[dateKey] = [];
+            });
+            
+            // Count office occupants per day
+            allPeople.forEach(person => {
+                if (person.days) {
+                    person.days.forEach(day => {
+                        const dateKey = day.timestamp;
+                        // Check if this date is in the current week
+                        if (occupancyByDay.hasOwnProperty(dateKey)) {
+                            // Check if location contains "office" (case-insensitive)
+                            if (day.location.toLowerCase().includes('office')) {
+                                occupancyByDay[dateKey].push(person.name);
+                            }
+                        }
+                    });
+                }
+            });
+            
+            return occupancyByDay;
+        }
+
+        function renderOfficeOccupancy() {
+            const occupancyData = calculateOfficeOccupancy();
+            const occupancyGrid = document.getElementById('occupancyGrid');
+            const occupancySection = document.getElementById('officeOccupancy');
+            
+            occupancyGrid.innerHTML = '';
+            
+            const weekDays = getCurrentWeekDays();
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            
+            weekDays.forEach((date, index) => {
+                const dateKey = formatDateISO(date);
+                const occupants = occupancyData[dateKey];
+                const occupantCount = occupants.length;
+                
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'day-occupancy';
+                
+                // Day name
+                const dayName = document.createElement('div');
+                dayName.className = 'day-name';
+                dayName.textContent = dayNames[index];
+                dayDiv.appendChild(dayName);
+                
+                // Desk indicators
+                const deskIndicators = document.createElement('div');
+                deskIndicators.className = 'desk-indicators';
+                
+                // Create 7 bars (5 fixed + 2 flex)
+                for (let i = 0; i < FIXED_DESKS + FLEX_DESKS; i++) {
+                    const deskBar = document.createElement('div');
+                    deskBar.className = 'desk-bar';
+                    
+                    if (i < occupantCount) {
+                        if (i < FIXED_DESKS) {
+                            deskBar.classList.add('occupied');
+                        } else if (i < FIXED_DESKS + FLEX_DESKS) {
+                            deskBar.classList.add('flex');
+                        }
+                    }
+                    
+                    deskIndicators.appendChild(deskBar);
+                }
+                
+                // Add extra red bars if over capacity
+                if (occupantCount > FIXED_DESKS + FLEX_DESKS) {
+                    const extraCount = occupantCount - (FIXED_DESKS + FLEX_DESKS);
+                    for (let i = 0; i < extraCount; i++) {
+                        const deskBar = document.createElement('div');
+                        deskBar.className = 'desk-bar overcapacity';
+                        deskIndicators.appendChild(deskBar);
+                    }
+                }
+                
+                dayDiv.appendChild(deskIndicators);
+                
+                // Desk count
+                const deskCount = document.createElement('div');
+                deskCount.className = 'desk-count';
+                deskCount.textContent = `${occupantCount} ${occupantCount === 1 ? 'person' : 'people'}`;
+                dayDiv.appendChild(deskCount);
+                
+                // Occupant names
+                const occupantNames = document.createElement('div');
+                occupantNames.className = 'occupant-names';
+                occupants.forEach(name => {
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'name';
+                    nameSpan.textContent = name;
+                    occupantNames.appendChild(nameSpan);
+                });
+                dayDiv.appendChild(occupantNames);
+                
+                occupancyGrid.appendChild(dayDiv);
+            });
+            
+            occupancySection.style.display = 'block';
+        }
 
         function filterPeople(searchTerm) {
             const contentDiv = document.getElementById('content');
@@ -465,6 +668,9 @@
                     const personCard = renderPerson(person);
                     contentDiv.appendChild(personCard);
                 });
+
+                // Render office occupancy
+                renderOfficeOccupancy();
 
                 // Set up search functionality
                 const searchInput = document.getElementById('searchInput');
