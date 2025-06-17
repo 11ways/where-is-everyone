@@ -484,9 +484,11 @@
                 contentDiv.innerHTML = `
                     <strong>Error loading data:</strong><br>
                     ${error.message}<br><br>
-                    Please check your internet connection and try refreshing the page.
+                    <small>URL: ${url}</small><br><br>
+                    Please check your internet connection and try refreshing the page.<br><br>
+                    <a href="${GITHUB_RAW_URL}" target="_blank">Try opening people.json directly</a>
                 `;
-                console.error('Error fetching data:', error);
+                console.error('Error fetching data from:', url, error);
             }
         }
 
