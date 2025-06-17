@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Working Locations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border: 1px solid #f57c00;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .step h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #34495e;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 0.5rem;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .button:hover {
+            background: #1565c0;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .location-option {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .location-option:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .location-office { background: #e8f5e9; }
+        .location-home { background: #fff3e0; }
+        .location-remote { background: #f3e5f5; }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How to Update Working Locations</h1>
+        
+        <div class="info-box">
+            <strong>Note:</strong> Working locations must be updated directly in Google Calendar. This ensures proper synchronization and permissions.
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">1</span> Open Google Calendar</h2>
+            <p>Go to <a href="https://calendar.google.com" target="_blank">calendar.google.com</a> and sign in with your account.</p>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">2</span> Enable Working Location</h2>
+            <p>Click on the settings gear (⚙️) in the top right corner and select "Settings".</p>
+            <p>In the left sidebar, click on "General" and find the "Working location" section.</p>
+            <p>Toggle on "Enable working location".</p>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">3</span> Set Your Daily Location</h2>
+            <p>There are two ways to set your working location:</p>
+            
+            <h3>Option A: From Calendar View</h3>
+            <ol>
+                <li>Navigate to the day you want to set</li>
+                <li>Look for the working location indicator below the date</li>
+                <li>Click on it and select your location</li>
+            </ol>
+            
+            <h3>Option B: Recurring Schedule</h3>
+            <ol>
+                <li>In Settings → Working location</li>
+                <li>Set up a recurring schedule (e.g., "Office on Mon-Wed, Home on Thu-Fri")</li>
+                <li>Google Calendar will automatically apply this pattern</li>
+            </ol>
+            
+            <div class="location-grid">
+                <div class="location-option location-office">
+                    <strong>Office</strong><br>
+                    Working from company office
+                </div>
+                <div class="location-option location-home">
+                    <strong>Home</strong><br>
+                    Working from home
+                </div>
+                <div class="location-option location-remote">
+                    <strong>Remote</strong><br>
+                    Working from another location
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">4</span> Custom Locations</h2>
+            <p>You can also set custom locations like:</p>
+            <ul>
+                <li>"Client Site"</li>
+                <li>"Conference"</li>
+                <li>"Co-working Space"</li>
+                <li>Or any specific location name</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <strong>Important:</strong> After updating your working locations in Google Calendar, the changes will appear in the team dashboard after the next automatic update (or when an admin runs the update script).
+        </div>
+
+        <div class="step">
+            <h2><span class="step-number">5</span> Sharing Your Calendar</h2>
+            <p>If you're a new team member, make sure your calendar is shared with the admin:</p>
+            <ol>
+                <li>In Google Calendar, find your calendar in the left sidebar</li>
+                <li>Click the 3 dots menu → "Settings and sharing"</li>
+                <li>Under "Share with specific people", add the admin's email</li>
+                <li>Grant "See all event details" permission</li>
+            </ol>
+        </div>
+
+        <a href="index.html" class="button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

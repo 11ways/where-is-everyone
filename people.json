@@ -1,268 +1,365 @@
 {
   "people": [
     {
-      "id": "rianne.welledonker@elevenways.be",
       "name": "Rianne Welle Donker",
       "days": [
         {
-          "timestamp": "2023-10-24",
+          "timestamp": "2025-06-17",
           "location": "Home"
         },
         {
-          "timestamp": "2023-10-25",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-27",
-          "location": "Home"
-        }
-      ]
-    },
-    {
-      "id": "regine.lambrecht@elevenways.be",
-      "name": "Régine Lambrecht",
-      "days": [
-        {
-          "timestamp": "2023-10-24",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-27",
-          "location": "Home"
-        }
-      ]
-    },
-    {
-      "id": "federica.buzzi@elevenways.be",
-      "name": "Federica Buzzi",
-      "days": [
-        {
-          "timestamp": "2023-10-23",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-24",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-24",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-30",
-          "location": "Home"
-        }
-      ]
-    },
-    {
-      "id": "meryem.lahouel@elevenways.be",
-      "name": "Méryem Lahouel",
-      "days": [
-        {
-          "timestamp": "2023-10-24",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-27",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-31",
-          "location": "Home"
-        }
-      ]
-    },
-    {
-      "id": "roel.van.gils@elevenways.be",
-      "name": "Roel Van Gils",
-      "days": [
-        {
-          "timestamp": "2023-10-23",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-24",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-27",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-30",
-          "location": "Kantoor Kouter (Office)"
-        }
-      ]
-    },
-    {
-      "id": "christophe.strobbe@elevenways.be",
-      "name": "Christophe Strobbe",
-      "days": [
-        {
-          "timestamp": "2023-10-23",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-30",
-          "location": "Home"
-        }
-      ]
-    },
-    {
-      "id": "jan.de.clercq@elevenways.be",
-      "name": "Jan De Clercq",
-      "days": [
-        {
-          "timestamp": "2023-10-23",
-          "location": "Home"
-        },
-        {
-          "timestamp": "2023-10-24",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-24",
+          "timestamp": "2025-06-18",
           "location": "Office"
         },
         {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
+          "timestamp": "2025-06-18",
+          "location": "Home"
         },
         {
-          "timestamp": "2023-10-25",
+          "timestamp": "2025-06-19",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-19",
           "location": "Office"
         },
         {
-          "timestamp": "2023-10-26",
+          "timestamp": "2025-06-20",
           "location": "Home"
         },
         {
-          "timestamp": "2023-10-27",
+          "timestamp": "2025-06-20",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-23",
           "location": "Home"
         },
         {
-          "timestamp": "2023-10-30",
+          "timestamp": "2025-06-24",
           "location": "Home"
         }
       ]
     },
     {
-      "id": "sophie.ragas@elevenways.be",
-      "name": "Sophie Ragas",
+      "name": "R\u00e9gine Lambrecht",
+      "days": []
+    },
+    {
+      "name": "M\u00e9ryem Lahouel",
       "days": [
         {
-          "timestamp": "2023-10-24",
-          "location": "Thuis"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Thuis"
-        },
-        {
-          "timestamp": "2023-10-25",
-          "location": "Thuis"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "BOSA"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Thuis"
-        },
-        {
-          "timestamp": "2023-10-27",
-          "location": "Thuis"
-        }
-      ]
-    },
-    {
-      "id": "nora.goerne@elevenways.be",
-      "name": "Nora Goerne",
-      "days": [
-        {
-          "timestamp": "2023-10-23",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-24",
-          "location": "Kantoor Kouter (Kantoor)"
-        },
-        {
-          "timestamp": "2023-10-24",
+          "timestamp": "2025-06-17",
           "location": "Home"
         },
         {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
+          "timestamp": "2025-06-18",
+          "location": "Home"
         },
         {
-          "timestamp": "2023-10-25",
-          "location": "Thuis"
+          "timestamp": "2025-06-19",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
         }
       ]
     },
     {
-      "id": "jelle@elevenways.be",
       "name": "Jelle De Loecker",
       "days": [
         {
-          "timestamp": "2023-10-23",
+          "timestamp": "2025-06-17",
           "location": "Kantoor Kouter (Office)"
         },
         {
-          "timestamp": "2023-10-24",
+          "timestamp": "2025-06-23",
           "location": "Kantoor Kouter (Office)"
         },
         {
-          "timestamp": "2023-10-25",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-26",
-          "location": "Kantoor Kouter (Office)"
-        },
-        {
-          "timestamp": "2023-10-30",
+          "timestamp": "2025-06-24",
           "location": "Kantoor Kouter (Office)"
         }
       ]
+    },
+    {
+      "name": "Jan De Clercq",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Travelbase"
+        },
+        {
+          "timestamp": "2025-06-17",
+          "location": "Headquarters (Office)"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Headquarters (Office)"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Travelbase"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Headquarters (Office)"
+        }
+      ]
+    },
+    {
+      "name": "Federica Buzzi",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "bpost"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "bpost"
+        }
+      ]
+    },
+    {
+      "name": "Nora Goerne",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-17",
+          "location": "Kom Op Tegen Kanker BXL (Office)"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Gent (Office)"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Kom Op Tegen Kanker BXL (Office)"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "name": "Eduarda Petry",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Headquarters (Office)"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Headquarters (Office)"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "name": "Sophie Ragas",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Kantoor"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Thuis"
+        }
+      ]
+    },
+    {
+      "name": "Maxim Calluy",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Thuis"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Thuis"
+        }
+      ]
+    },
+    {
+      "name": "Ariane Rosing",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "name": "Roel Van Gils",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Kantoor Kouter (Office)"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Ghent Office (Office)"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
+        }
+      ]
+    },
+    {
+      "name": "Christophe Strobbe",
+      "days": [
+        {
+          "timestamp": "2025-06-17",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-18",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-19",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-20",
+          "location": "Office"
+        },
+        {
+          "timestamp": "2025-06-23",
+          "location": "Home"
+        },
+        {
+          "timestamp": "2025-06-24",
+          "location": "Home"
+        }
+      ]
     }
-  ]
+  ],
+  "last_updated": "2025-06-17T13:32:32.144187+00:00"
 }

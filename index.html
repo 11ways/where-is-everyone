@@ -1,86 +1,497 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Where is everyone?</title>
-        <style>
-            body {
-                padding: 2rem;
-                font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where is everyone?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .update-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .update-link:hover {
+            background: #1565c0;
+        }
+
+        .search-container {
+            text-align: center;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .search-input {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 400px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #1976d2;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            font-size: 0.875rem;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .error {
+            background-color: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .person-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .person-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .person-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #34495e;
+        }
+
+        .location-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .location-table th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 2px solid #dee2e6;
+            font-size: 0.875rem;
+            width: 50%;
+        }
+
+        .location-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.875rem;
+            width: 50%;
+        }
+
+        .location-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .location-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .location-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .location-badge.office {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .location-badge.home {
+            background-color: #fff3e0;
+            color: #f57c00;
+        }
+
+        .location-badge.remote {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .date-cell {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #6c757d;
+            padding: 2rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 1024px) {
+            .people-grid {
+                grid-template-columns: 1fr;
             }
-            table {
-                width: 100%;
-                margin-bottom: 20px;
-                border-collapse: collapse;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
             }
-            th {
-                background-color: #eee;
+
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
             }
-            td,
-            th {
-                width: 2rem;
-                padding: 15px;
-                text-align: left;
-                border-bottom: 1px solid #ccc;
+
+            .people-grid {
+                gap: 1rem;
             }
-        </style>
-    </head>
-    <body>
-        <h1>Where is everyone?</h1>
 
-        <div id="dataDiv"></div>
+            .person-card {
+                padding: 0.75rem;
+            }
 
-        <script>
-            fetch(
-                'https://raw.githubusercontent.com/11ways/where-is-everyone/master/people.json',
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    const dataDiv = document.querySelector('#dataDiv');
+            .location-table th,
+            .location-table td {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.8rem;
+            }
 
-                    data.people.forEach((person) => {
-                        // Create a header with the person's name
-                        const personHeader = document.createElement('h2');
-                        personHeader.textContent = person.name;
-                        dataDiv.appendChild(personHeader);
+            .location-badge {
+                font-size: 0.7rem;
+                padding: 0.15rem 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Where is everyone?</h1>
+            <a href="update_interface.html" class="update-link">How to Update Your Location</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by name...">
+        </div>
+        <div id="lastUpdated" class="last-updated"></div>
+        <div id="content" class="loading">Loading...</div>
+    </div>
 
-                        const tbl = document.createElement('table');
-                        const tblHead = document.createElement('thead');
-                        const tblBody = document.createElement('tbody');
+    <script>
+        // Use local file when running locally, GitHub raw when served from GitHub Pages
+        const GITHUB_RAW_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? '/people.json' 
+            : 'https://raw.githubusercontent.com/11ways/where-is-everyone/master/people.json';
+        
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
 
-                        const headRow = document.createElement('tr');
+        function getLocationClass(location) {
+            const locationLower = location.toLowerCase();
+            if (locationLower.includes('office')) return 'office';
+            if (locationLower.includes('home')) return 'home';
+            if (locationLower.includes('remote')) return 'remote';
+            return '';
+        }
 
-                        const th1 = document.createElement('th');
-                        th1.textContent = 'Date';
-                        headRow.appendChild(th1);
+        function getCurrentWeekDays() {
+            const today = new Date();
+            const currentDay = today.getDay();
+            const monday = new Date(today);
+            
+            // Calculate days to Monday (if Sunday = 0, go back 6 days; if Monday = 1, go back 0 days, etc.)
+            const daysToMonday = currentDay === 0 ? 6 : currentDay - 1;
+            monday.setDate(today.getDate() - daysToMonday);
+            
+            const weekDays = [];
+            for (let i = 0; i < 5; i++) { // Monday to Friday
+                const date = new Date(monday);
+                date.setDate(monday.getDate() + i);
+                weekDays.push(date);
+            }
+            return weekDays;
+        }
 
-                        const th2 = document.createElement('th');
-                        th2.textContent = 'Location';
-                        headRow.appendChild(th2);
+        function formatDateISO(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
 
-                        tblHead.appendChild(headRow);
-                        tbl.appendChild(tblHead);
+        function renderPerson(person) {
+            const card = document.createElement('div');
+            card.className = 'person-card';
 
-                        person.days.forEach((day) => {
-                            const row = document.createElement('tr');
+            const name = document.createElement('h2');
+            name.className = 'person-name';
+            name.textContent = person.name;
+            card.appendChild(name);
 
-                            const dateCell = document.createElement('td');
-                            const date = new Date(day.timestamp);
-                            dateCell.textContent = `${date.getDate()}-${
-                                date.getMonth() + 1
-                            }-${date.getFullYear()}`;
-                            row.appendChild(dateCell);
-
-                            const locationCell = document.createElement('td');
-                            locationCell.textContent = day.location;
-                            row.appendChild(locationCell);
-
-                            tblBody.appendChild(row);
-                        });
-
-                        tbl.appendChild(tblBody);
-                        dataDiv.appendChild(tbl);
-                    });
+            // Group locations by date
+            const locationsByDate = {};
+            if (person.days) {
+                person.days.forEach(day => {
+                    const dateKey = day.timestamp;
+                    if (!locationsByDate[dateKey]) {
+                        locationsByDate[dateKey] = [];
+                    }
+                    locationsByDate[dateKey].push(day.location);
                 });
-        </script>
-    </body>
+            }
+
+            const table = document.createElement('table');
+            table.className = 'location-table';
+
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            
+            const dateHeader = document.createElement('th');
+            dateHeader.textContent = 'Date';
+            headerRow.appendChild(dateHeader);
+
+            const locationHeader = document.createElement('th');
+            locationHeader.textContent = 'Location';
+            headerRow.appendChild(locationHeader);
+
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            const tbody = document.createElement('tbody');
+            
+            // Always show Monday through Friday of current week
+            const weekDays = getCurrentWeekDays();
+            weekDays.forEach(date => {
+                const dateKey = formatDateISO(date);
+                const row = document.createElement('tr');
+
+                const dateCell = document.createElement('td');
+                dateCell.className = 'date-cell';
+                dateCell.textContent = formatDate(dateKey);
+                row.appendChild(dateCell);
+
+                const locationCell = document.createElement('td');
+                const locations = locationsByDate[dateKey];
+                
+                if (locations && locations.length > 0) {
+                    locations.forEach((location, index) => {
+                        const locationBadge = document.createElement('span');
+                        locationBadge.className = `location-badge ${getLocationClass(location)}`;
+                        locationBadge.textContent = location;
+                        locationCell.appendChild(locationBadge);
+                        
+                        if (index < locations.length - 1) {
+                            const separator = document.createElement('span');
+                            separator.textContent = ' → ';
+                            separator.style.margin = '0 0.25rem';
+                            locationCell.appendChild(separator);
+                        }
+                    });
+                } else {
+                    // No location set for this day
+                    const emptyBadge = document.createElement('span');
+                    emptyBadge.className = 'location-badge';
+                    emptyBadge.textContent = 'Empty';
+                    emptyBadge.style.backgroundColor = '#e0e0e0';
+                    emptyBadge.style.color = '#757575';
+                    locationCell.appendChild(emptyBadge);
+                }
+                
+                row.appendChild(locationCell);
+                tbody.appendChild(row);
+            });
+
+            table.appendChild(tbody);
+            card.appendChild(table);
+
+            return card;
+        }
+
+        let allPeople = [];
+
+        function filterPeople(searchTerm) {
+            const contentDiv = document.getElementById('content');
+            const filteredPeople = allPeople.filter(person => 
+                person.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            if (filteredPeople.length === 0) {
+                contentDiv.innerHTML = '<div class="no-results">No people found matching your search</div>';
+                contentDiv.className = '';
+                return;
+            }
+
+            contentDiv.innerHTML = '';
+            contentDiv.className = 'people-grid';
+            
+            filteredPeople.forEach(person => {
+                const personCard = renderPerson(person);
+                contentDiv.appendChild(personCard);
+            });
+        }
+
+        async function loadData() {
+            const contentDiv = document.getElementById('content');
+            
+            try {
+                // Add timestamp to URL to prevent caching
+                const timestamp = new Date().getTime();
+                const url = `${GITHUB_RAW_URL}?t=${timestamp}`;
+                
+                const response = await fetch(url, {
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data.people || data.people.length === 0) {
+                    contentDiv.innerHTML = '<div class="no-data">No people data available</div>';
+                    return;
+                }
+
+                allPeople = data.people;
+                contentDiv.innerHTML = '';
+                contentDiv.className = 'people-grid';
+                
+                // Display last updated time if available
+                const lastUpdatedDiv = document.getElementById('lastUpdated');
+                if (data.last_updated) {
+                    const updateTime = new Date(data.last_updated);
+                    const formattedTime = updateTime.toLocaleString('en-US', {
+                        dateStyle: 'medium',
+                        timeStyle: 'short'
+                    });
+                    lastUpdatedDiv.textContent = `Last updated: ${formattedTime}`;
+                } else {
+                    lastUpdatedDiv.textContent = 'Data freshness unknown';
+                }
+                
+                data.people.forEach(person => {
+                    const personCard = renderPerson(person);
+                    contentDiv.appendChild(personCard);
+                });
+
+                // Set up search functionality
+                const searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.trim();
+                    if (searchTerm === '') {
+                        // Show all people if search is empty
+                        contentDiv.innerHTML = '';
+                        contentDiv.className = 'people-grid';
+                        allPeople.forEach(person => {
+                            const personCard = renderPerson(person);
+                            contentDiv.appendChild(personCard);
+                        });
+                    } else {
+                        filterPeople(searchTerm);
+                    }
+                });
+                
+            } catch (error) {
+                contentDiv.className = 'error';
+                contentDiv.innerHTML = `
+                    <strong>Error loading data:</strong><br>
+                    ${error.message}<br><br>
+                    Please check your internet connection and try refreshing the page.
+                `;
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
 </html>
