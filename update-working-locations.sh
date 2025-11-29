@@ -14,7 +14,7 @@ fi
 
 # If 'people.json' has been changed, we stage and commit it
 cd "$SCRIPT_DIR"
-if git status --porcelain | grep -q "M  people.json"; then
+if git status --porcelain | grep -q "people.json"; then
     git add people.json
     git commit -m "people.json has been updated."
     git push --set-upstream origin master
